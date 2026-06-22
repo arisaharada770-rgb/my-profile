@@ -31,6 +31,16 @@ body {
     text-align: center;
 }
 
+.profile-img {
+    width: min(180px, 100%);
+    height: auto;
+    max-height: 180px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 24px;
+    object-fit: cover;
+}
+
 .hobby-hero p {
     margin-top: 18px;
     color: #6e5f47;
@@ -186,6 +196,7 @@ nav a:hover {
 
 @media (max-width: 640px) {
     .card {
+        width: 92%;
         padding: 28px 22px;
     }
 
@@ -196,5 +207,21 @@ nav a:hover {
 
     .photo-card img {
         height: 150px;
+    }
+
+    .profile-img {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto 18px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .card p,
+    .section p {
+        font-size: 0.98rem;
+        line-height: 1.7;
     }
 }
