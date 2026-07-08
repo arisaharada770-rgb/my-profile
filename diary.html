@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ありにゃんの日記 | ありにゃんの自己紹介サイト</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .diary-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .diary-input-section {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .diary-input-section h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .diary-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .diary-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 14px;
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .diary-form input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .diary-form button {
+            padding: 10px 20px;
+            background-color: #c5b469;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .diary-form button:hover {
+            background-color: #b5a45a;
+        }
+
+        .diary-entries {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .diary-entry {
+            background: white;
+            padding: 15px;
+            border-left: 4px solid #897761;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .diary-entry-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .diary-entry-date {
+            font-weight: bold;
+            color: #3b3b3b;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        .diary-entry-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #666;
+            text-align: left;
+        }
+
+        .diary-entry-content {
+            color: #555454;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .diary-entry-delete {
+            align-self: flex-end;
+            background-color: transparent;
+            color: #bbb;
+            border: 1px solid #ddd;
+            padding: 4px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 11px;
+            transition: all 0.3s;
+        }
+
+        .diary-entry-delete:hover {
+            background-color: #f5f5f5;
+            color: #888;
+            border-color: #ccc;
+        }
+
+        .diary-comments-section {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .diary-comments-title {
+            font-size: 13px;
+            font-weight: bold;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .diary-comments {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .diary-comment {
+            background: #f9f9f9;
+            padding: 8px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .diary-comment-name {
+            font-weight: bold;
+            color: #666;
+            font-size: 11px;
+        }
+
+        .diary-comment-text {
+            color: #555;
+            margin-top: 3px;
+            word-break: break-word;
+        }
+
+        .diary-comment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .diary-comment-form input,
+        .diary-comment-form textarea {
+            width: 100%;
+            padding: 6px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-size: 12px;
+            font-family: inherit;
+        }
+
+        .diary-comment-form textarea {
+            min-height: 60px;
+            resize: vertical;
+        }
+
+        .diary-comment-form button {
+            align-self: flex-start;
+            padding: 4px 12px;
+            background-color: #c5b469;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background-color 0.3s;
+        }
+
+        .diary-comment-form button:hover {
+            background-color: #b5a45a;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: #999;
+            padding: 30px;
+            font-size: 16px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">ホーム</a>
+        <a href="profile.html">プロフィール</a>
+        <a href="hobby.html">趣味</a>
+        <a href="diary.html">日記</a>
+    </nav>
+
+    <div class="card">
+        <h1>ありにゃんの日記</h1>
+    </div>
+
+    <div class="card diary-container">
+        <div class="diary-input-section">
+            <h3>新しい日記を書く（ありにゃんのみ投稿可）</h3>
+            <form class="diary-form" id="diaryForm">
+                <input 
+                    type="text" 
+                    id="diaryTitle" 
+                    placeholder="タイトルを入力してください" 
+                    required
+                >
+                <textarea 
+                    id="diaryContent" 
+                    placeholder="今日の出来事を書いてください..." 
+                    required
+                ></textarea>
+                <input 
+                    type="password" 
+                    id="diaryPassword" 
+                    placeholder="パスワードを入力してください" 
+                    required
+                >
+                <button type="submit">保存する</button>
+            </form>
+        </div>
+
+        <div id="diaryList" class="diary-entries">
+            <p class="empty-message">まだ日記がありません。書いてみましょう！</p>
+        </div>
+    </div>
+
+    <script src="diary.js"></script>
+</body>
+</html>
