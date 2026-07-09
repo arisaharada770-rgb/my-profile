@@ -213,6 +213,61 @@
             font-size: 16px;
         }
 
+        .auth-section {
+            background: #f7f2df;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .auth-section h3 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            color: #5f5134;
+            font-size: 15px;
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .auth-form input {
+            width: 100%;
+            padding: 7px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .auth-actions {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .auth-actions button,
+        .auth-signout {
+            padding: 7px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #c5b469;
+            color: white;
+            font-size: 13px;
+        }
+
+        .auth-actions button:hover,
+        .auth-signout:hover {
+            background-color: #b5a45a;
+        }
+
+        .auth-status {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #666;
+        }
 
     </style>
 </head>
@@ -229,8 +284,26 @@
     </div>
 
     <div class="card diary-container">
+        <p style="font-size: 13px; color: #666; margin-bottom: 16px;">
+            管理者アカウントでログインすると、日記を投稿・削除できます。<br>閲覧はそのまま誰でもできます。
+        </p>
+
+        <div class="auth-section">
+            <h3>管理者ログイン</h3>
+            <form class="auth-form" id="authForm">
+                <input type="email" id="authEmail" placeholder="管理者メールアドレス" required>
+                <input type="password" id="authPassword" placeholder="パスワード" required minlength="6">
+                <div class="auth-actions">
+                    <button type="submit" data-mode="signin">ログイン</button>
+                    <button type="submit" data-mode="signup">新規登録</button>
+                </div>
+            </form>
+            <div id="authStatus" class="auth-status">ログインしてください</div>
+            <button id="signOutButton" class="auth-signout" style="display:none;">ログアウト</button>
+        </div>
+
         <div class="diary-input-section">
-            <h3>新しい日記を書く（ありにゃんのみ投稿可）</h3>
+            <h3>新しい日記を書く（ログイン中のみ投稿可）</h3>
             <form class="diary-form" id="diaryForm">
                 <input 
                     type="text" 
@@ -243,12 +316,6 @@
                     placeholder="今日の出来事を書いてください..." 
                     required
                 ></textarea>
-                <input 
-                    type="password" 
-                    id="diaryPassword" 
-                    placeholder="パスワードを入力してください" 
-                    required
-                >
                 <button type="submit">保存する</button>
             </form>
         </div>
@@ -258,6 +325,7 @@
         </div>
     </div>
 
-    <script src="diary.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="diary.js?v=20260709"></script>
 </body>
 </html>
