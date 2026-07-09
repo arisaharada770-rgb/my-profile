@@ -76,7 +76,7 @@
 }
 
 .diary-entry-meta {
-    display: flex;
+    display: block;
     align-items: center;
     gap: 12px;
     margin-bottom: 15px;
@@ -87,6 +87,7 @@
     color: #3b3b3b;
     font-size: 12px;
     white-space: nowrap;
+    margin-bottom: 8px;
 }
 
 .diary-entry-title {
