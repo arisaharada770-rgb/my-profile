@@ -469,7 +469,7 @@ function updateAuthUI(user) {
             const roleText = isAdminEmail(user.email) ? '管理者としてログイン中' : 'ログイン中（管理者メールと一致していません）';
             status.textContent = `${roleText}: ${user.email}`;
         } else {
-            status.textContent = 'ログインしてください';
+            status.textContent = '';
         }
     }
 
