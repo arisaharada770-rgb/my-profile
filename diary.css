@@ -1,0 +1,272 @@
+.diary-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.diary-intro {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 16px;
+}
+
+.diary-input-section {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.diary-input-section h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.diary-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.diary-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+    min-height: 150px;
+}
+
+.diary-form input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.diary-form button {
+    padding: 10px 20px;
+    background-color: #c5b469;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.diary-form button:hover {
+    background-color: #b5a45a;
+}
+
+.diary-entries {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.diary-entry {
+    background: white;
+    padding: 15px;
+    border-left: 4px solid #897761;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.diary-entry-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.diary-entry-date {
+    font-weight: bold;
+    color: #3b3b3b;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.diary-entry-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #666;
+    text-align: left;
+}
+
+.diary-entry-content {
+    color: #555454;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.diary-entry-delete {
+    align-self: flex-end;
+    background-color: transparent;
+    color: #bbb;
+    border: 1px solid #ddd;
+    padding: 4px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 11px;
+    transition: all 0.3s;
+}
+
+.diary-entry-delete:hover {
+    background-color: #f5f5f5;
+    color: #888;
+    border-color: #ccc;
+}
+
+.diary-comments-section {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.diary-comments-title {
+    font-size: 13px;
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.diary-comments {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.diary-comment {
+    background: #f9f9f9;
+    padding: 8px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.diary-comment-name {
+    font-weight: bold;
+    color: #666;
+    font-size: 11px;
+}
+
+.diary-comment-text {
+    color: #555;
+    margin-top: 3px;
+    word-break: break-word;
+}
+
+.diary-comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.diary-comment-form input,
+.diary-comment-form textarea {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 12px;
+    font-family: inherit;
+}
+
+.diary-comment-form textarea {
+    min-height: 60px;
+    resize: vertical;
+}
+
+.diary-comment-form button {
+    align-self: flex-start;
+    padding: 4px 12px;
+    background-color: #c5b469;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.3s;
+}
+
+.diary-comment-form button:hover {
+    background-color: #b5a45a;
+}
+
+.empty-message {
+    text-align: center;
+    color: #999;
+    padding: 30px;
+    font-size: 16px;
+}
+
+.auth-section {
+    background: #f7f2df;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.auth-section h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #5f5134;
+    font-size: 15px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 7px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.auth-actions {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.auth-actions button,
+.auth-signout {
+    padding: 7px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #c5b469;
+    color: white;
+    font-size: 13px;
+}
+
+.auth-actions button:hover,
+.auth-signout:hover {
+    background-color: #b5a45a;
+}
+
+.auth-status {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #666;
+}
+
+.auth-signout.is-hidden {
+    display: none;
+}
