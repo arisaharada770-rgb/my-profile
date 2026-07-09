@@ -287,6 +287,10 @@ async function addComment(diaryId, name, text) {
 // 日記一覧の表示
 async function displayDiaries() {
     const diaryList = document.getElementById('diaryList');
+    if (!diaryList) {
+        return;
+    }
+
     diaryList.innerHTML = '<p class="empty-message">読み込み中...</p>';
 
     const diaries = await getDiaries();
@@ -429,6 +433,7 @@ function updateAuthUI(user) {
     }
 
     updateDiaryWriteAccess(user);
+    void displayDiaries();
 }
 
 async function refreshAuthUser() {
@@ -573,6 +578,6 @@ document.getElementById('diaryForm').addEventListener('submit', async (e) => {
 
 // ページロード時に日記を表示
 document.addEventListener('DOMContentLoaded', async () => {
+    void displayDiaries();
     await initAuth();
-    await displayDiaries();
 });
