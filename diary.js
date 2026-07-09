@@ -121,6 +121,7 @@ async function getDiaries() {
 
     try {
         const headers = await getSupabaseHeaders(false);
+        console.log(headers);
         const response = await fetch(`${SUPABASE_URL}/rest/v1/diaries?select=*&order=created_at.desc`, {
             method: 'GET',
             headers
@@ -128,11 +129,16 @@ async function getDiaries() {
 
         if (!response.ok) {
             const errorText = await response.text();
-            console.error('getDiaries failed', { status: response.status, body: errorText, url: `${SUPABASE_URL}/rest/v1/diaries?select=*&order=created_at.desc` });
-            return [];
+            console.error("日記取得エラー", {
+        status: response.status,
+        body: errorText
+    });
+
+    alert(`日記取得失敗: ${response.status}`);
         }
 
         const data = await response.json();
+        console.log("diaries data:", data);
         return Array.isArray(data) ? data : [];
     } catch (error) {
         console.error('getDiaries exception', error);
@@ -573,10 +579,6 @@ document.getElementById('authForm').addEventListener('submit', async (e) => {
 
     await refreshAuthUser();
     form.reset();
-    const authEmailInput = document.getElementById('authEmail');
-    if (authEmailInput) {
-        authEmailInput.value = adminEmail;
-    }
 });
 
 // ログアウト
