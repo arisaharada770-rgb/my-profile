@@ -153,6 +153,9 @@
     border-radius: 3px;
     font-size: 12px;
     line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
 .diary-comment-name {
@@ -165,6 +168,12 @@
     color: #555;
     margin-top: 3px;
     word-break: break-word;
+}
+
+.diary-comment .diary-entry-delete {
+    align-self: flex-start;
+    padding: 3px 7px;
+    font-size: 10px;
 }
 
 .diary-comment-form {

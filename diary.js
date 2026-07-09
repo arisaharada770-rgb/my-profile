@@ -284,6 +284,35 @@ async function addComment(diaryId, name, text) {
     }
 }
 
+// コメントの削除
+async function deleteComment(id) {
+    const user = await requireAdminAccess();
+    if (!user) {
+        return false;
+    }
+
+    try {
+        const headers = await getSupabaseHeaders(true);
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/comments?id=eq.${id}`, {
+            method: 'DELETE',
+            headers
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('deleteComment failed', response.status, errorText);
+            alert('コメントの削除に失敗しました。');
+            return false;
+        }
+
+        return true;
+    } catch (error) {
+        console.error(error);
+        alert('コメントの削除に失敗しました。');
+        return false;
+    }
+}
+
 // 日記一覧の表示
 async function displayDiaries() {
     const diaryList = document.getElementById('diaryList');
@@ -308,6 +337,7 @@ async function displayDiaries() {
             <div class="diary-comment">
                 <div class="diary-comment-name">${escapeHtml(comment.name)} - ${formatDate(comment.created_at)}</div>
                 <div class="diary-comment-text">${escapeHtml(comment.text)}</div>
+                ${canManage ? `<button class="diary-entry-delete" onclick="handleDeleteComment(${comment.id})">削除</button>` : ''}
             </div>
         `).join('');
 
@@ -393,6 +423,15 @@ async function handleAddComment(event, diaryId) {
     }
 }
 
+async function handleDeleteComment(id) {
+    if (confirm('このコメントを削除してもよろしいですか？')) {
+        const success = await deleteComment(id);
+        if (success) {
+            await displayDiaries();
+        }
+    }
+}
+
 function updateDiaryWriteAccess(user) {
     const diaryForm = document.getElementById('diaryForm');
     const titleInput = document.getElementById('diaryTitle');
@@ -466,7 +505,7 @@ async function initAuth() {
 
     const authEmailInput = document.getElementById('authEmail');
     if (authEmailInput) {
-        authEmailInput.value = adminEmail;
+        authEmailInput.value = '';
         authEmailInput.addEventListener('input', (event) => {
             setAdminEmail(event.target.value);
         });
