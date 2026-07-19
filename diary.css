@@ -291,10 +291,22 @@
     background-color: #b5a45a;
 }
 
+.auth-reset-link {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #5f5134;
+    text-decoration: underline;
+}
+
 .auth-status {
     margin-top: 8px;
     font-size: 12px;
     color: #666;
+}
+
+.is-hidden {
+    display: none;
 }
 
 .auth-signout.is-hidden {
