@@ -38,7 +38,7 @@ function clearMessage(elementId) {
 
 async function requestPasswordReset(email) {
     const { data, error } = await supabaseClient.auth.resetPasswordForEmail(email, {
-        redirectTo: `${window.location.origin}/reset-password.html`
+        rredirectTo: `${window.location.origin}/my-profile/reset-password.html`
     });
 
     if (error) {
@@ -74,19 +74,23 @@ async function initPasswordResetPage() {
         return;
     }
 
-    try {
-        const { data, error } = await supabaseClient.auth.getSessionFromUrl({ storeSession: true });
-        if (error) {
-            console.warn('getSessionFromUrl failed', error.message);
-        }
-        if (data?.session) {
-            showNewPasswordForm();
-            showMessage('resetNotice', 'メールから戻ってきたら、ここで新しいパスワードを入力してください。');
-            return;
-        }
-    } catch (err) {
-        console.warn('initPasswordResetPage exception', err);
+    // すでにリカバリーセッションがある場合
+    const { data: { session } } = await supabaseClient.auth.getSession();
+
+    if (session) {
+        showNewPasswordForm();
     }
+
+    // メールのリンクから戻ってきたとき
+    supabaseClient.auth.onAuthStateChange((event, session) => {
+        if (event === "PASSWORD_RECOVERY") {
+            showNewPasswordForm();
+            showMessage(
+                "resetNotice",
+                "新しいパスワードを入力してください。"
+            );
+        }
+    });
 }
 
 async function handleResetRequest(event) {
