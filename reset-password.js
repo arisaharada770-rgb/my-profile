@@ -38,7 +38,7 @@ function clearMessage(elementId) {
 
 async function requestPasswordReset(email) {
     const { data, error } = await supabaseClient.auth.resetPasswordForEmail(email, {
-        rredirectTo: `${window.location.origin}/my-profile/reset-password.html`
+        redirectTo: `https://arisasanma770-rgb.github.io/my-profile/reset-password.html'
     });
 
     if (error) {
