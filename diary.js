@@ -533,27 +533,6 @@ async function initAuth() {
     });
 }
 
-const hash = window.location.hash;
-
-if (hash.includes("type=recovery")) {
-
-    const newPassword = prompt("新しいパスワードを入力してください");
-
-    if (newPassword) {
-
-        const { error } = await supabaseClient.auth.updateUser({
-            password: newPassword
-        });
-
-        if (error) {
-            alert("パスワード変更失敗：" + error.message);
-        } else {
-            alert("パスワードを変更しました。");
-            history.replaceState({}, document.title, location.pathname);
-        }
-    }
-}
-
 // 認証フォーム送信の処理
 document.getElementById('authForm').addEventListener('submit', async (e) => {
     e.preventDefault();
