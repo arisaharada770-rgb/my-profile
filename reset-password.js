@@ -38,7 +38,7 @@ function clearMessage(elementId) {
 
 async function requestPasswordReset(email) {
     const { data, error } = await supabaseClient.auth.resetPasswordForEmail(email, {
-        redirectTo: `https://arisasanma770-rgb.github.io/my-profile/reset-password.html'
+        redirectTo: 'https://arisasanma770-rgb.github.io/my-profile/reset-password.html'
     });
 
     if (error) {
@@ -148,6 +148,7 @@ async function handleNewPasswordSubmit(event) {
     } catch (error) {
         showMessage('resetResult', error.message, true);
     }
+        
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
